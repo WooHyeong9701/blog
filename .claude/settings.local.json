@@ -31,7 +31,10 @@
       "Bash(PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\" /opt/homebrew/bin/node /opt/homebrew/bin/npx next build)",
       "Bash(/opt/homebrew/bin/git init:*)",
       "Bash(/opt/homebrew/bin/git add:*)",
-      "Bash(/opt/homebrew/bin/git commit:*)"
+      "Bash(/opt/homebrew/bin/git commit:*)",
+      "Bash(/opt/homebrew/bin/git push:*)",
+      "Bash(/opt/homebrew/bin/git log:*)",
+      "Bash(/opt/homebrew/bin/git status:*)"
     ]
   }
 }

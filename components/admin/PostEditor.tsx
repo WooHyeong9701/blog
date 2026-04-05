@@ -210,7 +210,18 @@ export function PostEditor({ slug: editSlug, initialRaw }: PostEditorProps) {
 
     // 발행 성공 시 임시저장 삭제
     localStorage.removeItem(draftKey)
-    router.push(`/blog/${data.slug || editSlug}`)
+
+    // 로컬 환경에서 자동 git push
+    const finalSlug = data.slug || editSlug
+    try {
+      await fetch('/api/git-push', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: finalSlug, title }),
+      })
+    } catch {}
+
+    router.push(`/blog/${finalSlug}`)
     router.refresh()
   }
 
