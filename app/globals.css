@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* frappe-gantt */
+@import './frappe-gantt.css';
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+  }
+
+  .dark {
+    --background: 15 23 42;
+    --foreground: 248 250 252;
+  }
+
+  body {
+    @apply bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-50;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  * {
+    @apply border-slate-200 dark:border-slate-700;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* rehype-pretty-code 코드 블록 스타일 */
+[data-rehype-pretty-code-fragment] {
+  @apply my-6 overflow-hidden rounded-xl border;
+}
+
+[data-rehype-pretty-code-fragment] [data-rehype-pretty-code-title] {
+  @apply px-4 py-2 text-xs font-medium text-slate-500 dark:text-slate-400 border-b bg-slate-50 dark:bg-slate-800;
+}
+
+[data-rehype-pretty-code-fragment] pre {
+  @apply overflow-x-auto py-4 text-sm leading-relaxed;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid;
+}
+
+[data-rehype-pretty-code-fragment] [data-line] {
+  @apply px-4 border-l-2 border-transparent;
+}
+
+[data-rehype-pretty-code-fragment] [data-highlighted-line] {
+  @apply bg-blue-500/10 border-l-2 border-blue-500;
+}
+
+[data-rehype-pretty-code-fragment] [data-highlighted-chars] {
+  @apply bg-blue-500/20 rounded px-1;
+}
+
+/* 라이트/다크 테마 전환 */
+[data-rehype-pretty-code-fragment] [data-theme='light'] {
+  @apply block dark:hidden bg-slate-50;
+}
+
+[data-rehype-pretty-code-fragment] [data-theme='dark'] {
+  @apply hidden dark:block bg-slate-900;
+}

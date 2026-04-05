@@ -1,0 +1,77 @@
+---
+title: '차트와 간트차트 데모'
+description: 'MDX 안에서 Recharts와 frappe-gantt를 사용하는 방법을 보여줍니다.'
+date: '2026-04-04'
+tags: ['시각화', 'Recharts', '차트']
+category: '개발'
+published: true
+---
+
+# 차트와 간트차트 데모
+
+MDX 안에서 `<BarChart>`, `<LineChart>`, `<GanttChart>` 컴포넌트를 바로 삽입할 수 있어요.
+
+## 막대 차트
+
+<BarChart
+  title="월별 방문자 수"
+  xKey="month"
+  unit="명"
+  bars={[{ key: "visitors", label: "방문자" }, { key: "pageviews", label: "페이지뷰" }]}
+  data={[
+    { month: "1월", visitors: 420, pageviews: 1200 },
+    { month: "2월", visitors: 580, pageviews: 1650 },
+    { month: "3월", visitors: 740, pageviews: 2100 },
+    { month: "4월", visitors: 910, pageviews: 2800 },
+    { month: "5월", visitors: 1100, pageviews: 3400 },
+    { month: "6월", visitors: 1350, pageviews: 4200 }
+  ]}
+/>
+
+## 꺾은선 차트
+
+<LineChart
+  title="주간 글 조회수 추이"
+  xKey="week"
+  unit="회"
+  lines={[{ key: "views", label: "조회수", color: "#0ea5e9" }]}
+  data={[
+    { week: "1주차", views: 120 },
+    { week: "2주차", views: 340 },
+    { week: "3주차", views: 280 },
+    { week: "4주차", views: 560 },
+    { week: "5주차", views: 780 },
+    { week: "6주차", views: 1100 }
+  ]}
+/>
+
+## 간트차트
+
+프로젝트 일정을 글 안에 바로 그릴 수 있어요.
+
+<GanttChart
+  title="블로그 개발 일정"
+  viewMode="Week"
+  tasks={[
+    { id: "1", name: "1단계: 기초 세팅", start: "2026-04-01", end: "2026-04-14", progress: 100 },
+    { id: "2", name: "2단계: 레이아웃", start: "2026-04-15", end: "2026-05-05", progress: 100, dependencies: "1" },
+    { id: "3", name: "3단계: 검색/댓글", start: "2026-05-06", end: "2026-05-26", progress: 80, dependencies: "2" },
+    { id: "4", name: "4단계: 콘텐츠 작성", start: "2026-05-27", end: "2026-06-10", progress: 0, dependencies: "3" },
+    { id: "5", name: "5단계: 애드센스 신청", start: "2026-06-11", end: "2026-06-18", progress: 0, dependencies: "4" }
+  ]}
+/>
+
+## 코드 하이라이팅
+
+```typescript
+// BarChart 사용 예시
+<BarChart
+  title="제목"
+  xKey="month"
+  bars={[{ key: "value", label: "값", color: "#0ea5e9" }]}
+  data={[
+    { month: "1월", value: 100 },
+    { month: "2월", value: 200 },
+  ]}
+/>
+```
