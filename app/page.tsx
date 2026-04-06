@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/posts'
 import { PostCard } from '@/components/blog/PostCard'
+import { VisitorStats } from '@/components/blog/VisitorStats'
 import { siteConfig } from '@/lib/config'
 
 export default function Home() {
@@ -13,9 +14,10 @@ export default function Home() {
         <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-slate-50 mb-4">
           {siteConfig.name}
         </h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-6">
           {siteConfig.description}
         </p>
+        <VisitorStats />
       </section>
 
       {/* 최근 글 */}
